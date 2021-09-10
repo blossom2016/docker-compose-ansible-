@@ -1,0 +1,43 @@
+version: '3.8'
+services:
+  alpha:
+    container_name: aplha
+    image: conti-test:latest
+    networks:
+      conti-test:
+        ipv4_address: 172.16.100.140
+  bravo:
+    container_name: bravo
+    image: conti-test:latest
+    deploy:
+      resources:
+        limits:
+          cpus: 0.10
+          memory: 4096M
+    depends_on:
+      - alpha
+    networks:
+      conti-test:
+        ipv4_address: 172.16.100.141
+  charlie:
+    container_name: charlie
+    image: conti-test:latest
+    environment:
+      - CONTI_ENV
+      - CONTI_DB_NAME
+    volumes:
+      - /opt/data:/opt/data
+    depends_on:
+      - bravo
+    networks:
+      conti-test:
+        ipv4_address: 172.16.100.142
+
+networks:
+  conti-test:
+    name: conti-test
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.100.128/26

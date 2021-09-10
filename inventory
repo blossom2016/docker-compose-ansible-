@@ -1,0 +1,7 @@
+[east]
+172.16.100.140
+172.16.100.141
+[west]
+172.16.100.142
+[east:vars]
+timezone:Asia/Tokyo

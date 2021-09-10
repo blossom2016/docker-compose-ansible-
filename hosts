@@ -1,0 +1,5 @@
+[east]
+ansible@172.16.100.140
+ansible@172.16.100.141
+[west]
+ansible@172.16.100.142

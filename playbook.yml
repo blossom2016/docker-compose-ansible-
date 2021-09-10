@@ -1,0 +1,15 @@
+- name: Greeting message east
+  hosts: east
+  remote_user: root
+  become: true
+  tasks:
+    - name: Transfer executable script script
+      shell: echo "Eastern Promises" > /etc/motd.msg
+
+- name: Greeting message west
+  hosts: west
+  remote_user: root
+  become: true
+  tasks:
+    - name: Transfer executable script script
+      shell: echo "Once upon a time in the west" > /etc/motd.msg
